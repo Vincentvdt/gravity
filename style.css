@@ -1,0 +1,20 @@
+
+body {
+    overflow: hidden;
+    font-family: "Helvetica Neue", sans-serif;
+    background-color: darkgray;
+}
+
+#root {
+    width: 100%;
+    min-height: 100vh;
+}
+
+.ball {
+    position: absolute;
+    background-color: black;
+    border-radius: 50%;
+    transition: opacity 500ms;
+    cursor: grab;
+}
+
