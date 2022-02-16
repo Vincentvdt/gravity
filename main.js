@@ -10,8 +10,8 @@ let mouse = {
     x: innerWidth / 2, y: innerHeight / 2
 }
 
-const gravity = 0.98
-const friction = 0.90
+const gravity = 0.2;
+const friction = 0.9;
 
 let colors = [
     '#219F94',
@@ -51,23 +51,19 @@ class Ball {
 
         this.position.x += this.velocity.x
         this.position.y += this.velocity.y
-        if (this.position.y + this.radius + this.velocity.y >= canvas.height ||
-            this.position.y - this.radius + this.velocity.y <= 0
-        ) {
+
+        if (this.position.y + this.radius + this.velocity.y > canvas.height) {
             this.velocity.y = -this.velocity.y * friction
+            this.velocity.x *= friction
         } else {
-            this.velocity.y = this.velocity.y += gravity
+            this.velocity.y += gravity
         }
 
         if (this.position.x + this.radius + this.velocity.x >= canvas.width ||
-            this.position.x - this.radius + this.velocity.x <= 0.5) {
+            this.position.x - this.radius + this.velocity.x <= 0) {
             this.velocity.x = -this.velocity.x * friction
         }
-        console.log(this.position.y)
-        if (this.position.y > canvas.height - 0.5) {
-            this.velocity.y = 0
-            this.velocity.x = 0
-        }
+
     }
 }
 
